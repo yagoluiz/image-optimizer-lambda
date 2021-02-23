@@ -1,0 +1,15 @@
+{
+  "scripts": {
+    "start:local": "sls invoke local --function upload",
+    "deploy": "sls deploy -v"
+  },
+  "dependencies": {
+    "busboy": "^0.3.1",
+    "sharp": "^0.27.1",
+    "uuid": "^3.3.2"
+  },
+  "devDependencies": {
+    "aws-sdk": "^2.846.0",
+    "serverless-offline": "^6.8.0"
+  }
+}

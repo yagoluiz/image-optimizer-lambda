@@ -1,0 +1,29 @@
+service: images-upload-optmized-dev
+frameworkVersion: '2'
+
+provider:
+  name: aws
+  runtime: nodejs12.x
+  region: us-east-1
+  memorySize: 256
+  lambdaHashingVersion: 20201221
+  iamRoleStatements:
+    - Effect: Allow
+      Action:
+        - s3:PutObject
+      Resource:
+        - "arn:aws:s3:::*"
+  environment:
+    BUCKET_NAME: images-optmized-upload
+
+functions:
+  upload:
+    handler: upload.uploadHandler
+    events:
+      - httpApi:
+          path: /upload
+          method: post
+          cors: true
+   
+plugins:
+  - serverless-offline
